@@ -254,10 +254,25 @@ class BringFidoScraper {
   }
 
   async scrapeAllCategories(): Promise<VenueData[]> {
-    const browser = await chromium.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-dev-shm-usage']
-    })
+    let browser
+    try {
+      browser = await chromium.launch({
+        headless: true,
+        args: [
+          '--no-sandbox', 
+          '--disable-dev-shm-usage',
+          '--disable-gpu',
+          '--disable-web-security',
+          '--disable-features=VizDisplayCompositor'
+        ]
+      })
+    } catch (error) {
+      this.progressCallback({
+        error: 'Browser launch failed. Please try again in a few minutes.',
+        stage: 'Browser Error'
+      })
+      throw error
+    }
     
     const page = await browser.newPage()
     page.setDefaultTimeout(45000)
