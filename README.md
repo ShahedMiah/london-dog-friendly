@@ -1,70 +1,101 @@
-# 🐕 London Dog-Friendly Directory
+# 🐕 London Dog-Friendly Directory Web App
 
-An interactive directory of dog-friendly businesses in London, built with Next.js and deployed on Vercel.
+A Next.js application that allows users to export comprehensive dog-friendly venue data from London via a simple web interface.
 
-## 🌟 Features
+## ✨ Features
 
-- **Interactive Map**: Explore 800+ dog-friendly venues on an interactive map
-- **Advanced Search**: Filter by category, location, and ratings
-- **Detailed Listings**: Complete business information including contact details
-- **Mobile Responsive**: Optimized for all devices
-- **Real-time Updates**: Fresh data from multiple sources
+- **One-Click Export**: Click "Start Data Export" to scrape 800+ venues
+- **Real-time Progress**: Live updates showing scraping progress
+- **Automatic Download**: CSV file automatically generated and downloadable
+- **Comprehensive Data**: Restaurants, hotels, attractions, and services
+- **Professional UI**: Clean, responsive design built with Tailwind CSS
 
-## 🎯 Categories
+## 🚀 Quick Start
 
-- **Restaurants & Pubs**: 121+ venues
-- **Hotels & Accommodation**: 658+ venues  
-- **Attractions & Activities**: 44+ venues
-- **Services**: 8+ venues
-
-## 🚀 Live Demo
-
-Visit the live site: [https://your-site.vercel.app](https://your-site.vercel.app)
-
-## 🛠️ Technology Stack
-
-- **Frontend**: Next.js 14, React, Tailwind CSS
-- **Backend**: Next.js API Routes
-- **Database**: Vercel Postgres
-- **Maps**: Leaflet.js
-- **Deployment**: Vercel
-- **Data Source**: BringFido.com scraping + manual curation
-
-## 📊 Data
-
-The dataset includes:
-- 800+ dog-friendly venues across London
-- Complete business details (name, address, phone, website)
-- GPS coordinates for mapping
-- Category classifications
-- Dog-friendly specific descriptions
-
-## 🔧 Development
-
+### Development
 ```bash
-# Clone the repository
-git clone https://github.com/[username]/london-dog-friendly.git
-cd london-dog-friendly
-
-# Install dependencies
-npm install
-
-# Set up environment variables
-cp .env.example .env.local
-
-# Run development server
 npm run dev
 ```
+Visit: http://localhost:3000
 
-## 📈 Contributing
+### Production Build
+```bash
+npm run build
+npm start
+```
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+## 📊 Data Export Process
 
-## 📄 License
+1. **Click Export**: User clicks "Start Data Export" button
+2. **Live Scraping**: App scrapes BringFido.com in real-time
+3. **Progress Updates**: Shows current status, venues processed, etc.
+4. **CSV Generation**: Creates downloadable CSV file with all data
+5. **Download**: User can download the complete dataset
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🎯 Vercel Deployment
 
-## 🙏 Acknowledgments
+### Option 1: Connect to GitHub (Recommended)
+1. Push this code to your GitHub repository
+2. In Vercel dashboard, import the GitHub repository
+3. Vercel will automatically detect Next.js and deploy
 
-- Data sourced from BringFido.com
-- Built with love for London dog owners 🐾
+### Option 2: Deploy from Local
+```bash
+npx vercel --prod
+```
+
+## 🔧 Environment Variables (Optional)
+
+No environment variables required for basic functionality.
+
+## 📁 File Structure
+
+```
+nextjs-app/
+├── app/
+│   ├── api/export/route.ts    # Scraping API endpoint
+│   ├── globals.css            # Tailwind styles
+│   ├── layout.tsx             # Root layout
+│   └── page.tsx               # Main export interface
+├── public/                    # Static files & generated CSVs
+├── package.json               # Dependencies
+└── next.config.js             # Next.js configuration
+```
+
+## 🎨 Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS
+- **Scraping**: Playwright (Chromium)
+- **Data Export**: CSV Writer
+- **TypeScript**: Full type safety
+- **Deployment**: Vercel
+
+## 🔍 What Gets Exported
+
+The CSV includes:
+- **Business Info**: Name, description, category
+- **Contact Details**: Phone, email, website
+- **Location**: Full address, GPS coordinates
+- **Source Data**: Venue ID, original BringFido URL
+
+## ⚡ Performance Notes
+
+- **Scraping Time**: 4-6 hours for complete dataset
+- **Progress Updates**: Real-time streaming updates
+- **Browser**: Runs headless Chromium for efficiency
+- **Rate Limiting**: Respectful delays between requests
+
+## 🚀 Deployment to Vercel
+
+This app is ready for immediate Vercel deployment:
+
+1. **Push to GitHub** (if not already done)
+2. **Import to Vercel** from your GitHub repo
+3. **Deploy** - No additional configuration needed!
+
+The app will automatically handle the scraping and file generation in Vercel's serverless environment.
+
+---
+
+**Ready to deploy?** Just push to GitHub and import to Vercel! 🚀
