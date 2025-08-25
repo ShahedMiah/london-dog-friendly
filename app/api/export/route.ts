@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { chromium } from 'playwright'
+import puppeteer from 'puppeteer'
 import * as fs from 'fs'
 import * as path from 'path'
 import { createObjectCsvWriter } from 'csv-writer'
@@ -256,7 +256,7 @@ class BringFidoScraper {
   async scrapeAllCategories(): Promise<VenueData[]> {
     let browser
     try {
-      browser = await chromium.launch({
+      browser = await puppeteer.launch({
         headless: true,
         args: [
           '--no-sandbox', 

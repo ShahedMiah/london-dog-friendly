@@ -2,7 +2,7 @@
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "installCommand": "npm install && npx playwright install chromium --with-deps",
+  "installCommand": "npm install",
   "functions": {
     "app/api/export/route.ts": {
       "maxDuration": 300,

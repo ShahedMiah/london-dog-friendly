@@ -1,10 +1,10 @@
 import { NextRequest } from 'next/server'
-import { chromium } from 'playwright'
+import puppeteer from 'puppeteer'
 
 export async function GET(request: NextRequest) {
   try {
     // Test browser launch
-    const browser = await chromium.launch({
+    const browser = await puppeteer.launch({
       headless: true,
       args: [
         '--no-sandbox',
